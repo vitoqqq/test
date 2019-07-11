@@ -7,8 +7,8 @@ trigger:
 - master
 
 pool:
-  vmImage: 'Default'
-
+  name: Default
+  
 variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
