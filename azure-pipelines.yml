@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  name: WS-VITOL-01
+  name: WS-VITOL-01 
   demands:
   - msbuild
   - visualstudio
