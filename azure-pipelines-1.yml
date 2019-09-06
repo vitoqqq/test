@@ -1,7 +1,7 @@
 trigger: none
 jobs:
 - job: Affected_E2E
-  condition: and(always(), eq(variables['E2E_ENABLED'], 'true'))
+  condition: and(always(), eq(variables['E2E_ENABLED'], 'false'))
   pool:
     name: Hosted Windows 2019 with VS2019
   steps:
