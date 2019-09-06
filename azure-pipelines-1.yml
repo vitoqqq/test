@@ -1,0 +1,19 @@
+trigger: none
+jobs:
+- job: Affected_E2E
+  condition: and(always(), eq(variables['E2E_ENABLED'], 'true'))
+  pool:
+    name: Hosted Windows 2019 with VS2019
+  steps:
+    - checkout: self
+      clean: false 
+    - task: CacheBeta@0
+      inputs:
+        key: $(Build.SourcesDirectory)/yarn.lock
+        path: $(Pipeline.Workspace)/.cache/yarn
+        cacheHitVar: CACHE_RESTORED
+        displayName: Cache yarn
+    - script: yarn --frozen-lockfile
+      condition: ne(variables.CACHE_RESTORED, 'true') # only run this step if the cache was not restored
+    - script: 'yarn pr-ci-e2e' 
+      displayName: 'yarn pr-ci-e2e'
