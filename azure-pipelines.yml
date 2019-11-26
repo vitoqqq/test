@@ -4,15 +4,7 @@
 # https://aka.ms/yaml
  
 trigger:
-- master
- 
-schedules:
-- cron: '0 */1 * * *'
-  displayName: Daily Check each 33 min
-  branches:
-    include:
-    - master
-  always: true
+- test
  
 pool:
   vmImage: 'ubuntu-latest'
